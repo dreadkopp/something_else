@@ -22,13 +22,17 @@
 }
 
 
-.collapsing {
+.collapse {
   position: relative;
-  height: 0;
+  max-height: 0px;
+  display: block;
   overflow: hidden;
-  -webkit-transition: height 0.5s ease;
-  -o-transition: height 0.5s ease;
-  transition: height 0.5s ease;
+  -webkit-transition: max-height 1s ease;
+  -o-transition: max-height 1s ease;
+  transition: max-height 1s ease;
+}
+.collapse.show {
+  max-height: 9001px;
 }
 
 #MainMenu {

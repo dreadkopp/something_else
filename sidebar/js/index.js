@@ -117,7 +117,7 @@ function createDiagram(containerToDraw, id_part) {
     var new_id_index = new_id.split("_")[1];
     var new_el = document.createElement("div");
     new_el.id = new_id;
-    
+
     //is empty?
     if (!containerToDraw.children.length) {
       containerToDraw.appendChild(new_el);
@@ -140,7 +140,7 @@ function createDiagram(containerToDraw, id_part) {
         //we really need to do stuff, eh?
         for (var i = 0; i < children.length; i++) {
           currentindex = children[i].id.split("_")[1];
-          
+
           if (new_id_index < currentindex && new_id_index > lastindex) {
             containerToDraw.insertBefore(new_el, containerToDraw.childNodes[i]);
           }
@@ -219,34 +219,40 @@ window.onscroll = function() {
 
 highlightAnchor(menuID, watchedElementID);
 
-function changeChevron(el) {
-  /*GOTO collapsable submenu*/
-  var follow = el.parentElement.nextSibling.nextSibling;
-  addShowListener(follow, function(bool) {
-    /*go back to where we came from */
-    var elem = follow.previousSibling.previousSibling.children[1].children[0];
-    if (bool) {
-      elem.classList.remove("fa-chevron-down");
-      elem.classList.add("fa-chevron-up");
-    } else {
-      elem.classList.remove("fa-chevron-up");
-      elem.classList.add("fa-chevron-down");
-    }
-  });
-}
+/* bool if accordion or not */
+var accordion = true;
 
-/*check if elem contains .show*/
-function addShowListener(elem, callback) {
-  var lastClassName = elem.className;
-  window.setInterval(function() {
-    var className = elem.className;
-    if (className !== lastClassName) {
-      if (elem.classList.contains("show")) {
-        callback(true);
-      } else {
-        callback(false);
+function changeChevron(el) {
+
+  var follow = el.parentElement.nextSibling.nextSibling;
+  var elem = el.children[0]
+
+  if (elem.classList.contains("fa-chevron-down")) {
+    console.log("expanding...");
+    follow.classList.add("show");
+    elem.classList.remove("fa-chevron-down");
+    elem.classList.add("fa-chevron-up");
+  }
+  else {
+    console.log("collapsing...");
+    follow.classList.remove("show");
+    elem.classList.remove("fa-chevron-up");
+    elem.classList.add("fa-chevron-down");
+  }
+
+  if (accordion) {
+    var main_menuentries = document.getElementsByClassName("main_menuentry");
+    Array.from(main_menuentries).forEach(entry => {
+      if (entry != el.parentElement) {
+        entry.nextSibling.nextSibling.classList.remove("show");
+        var chev = entry.children[1].children[0];
+        chev.classList.remove("fa-chevron-up");
+        if (!chev.classList.contains("fa-chevron-down")){
+          chev.classList.add("fa-chevron-down");
+        }
+
       }
-      lastClassName = className;
-    }
-  }, 250);
+    });
+  }
+
 }
