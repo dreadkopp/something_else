@@ -9,6 +9,7 @@ html {
 
 
 .box {
+  background-color: #bbb;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -120,7 +121,6 @@ nav {
 }
 
 #graphs {
-  margin-top: 100px;
   left: 0px;
 }
 
