@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>sidebar stuff IV</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <div id="content">
+
+  <div id="nav_wrapper" class="clearfix">
+    <nav>
+      <button onclick="toggle_sidebar()" id="menubutton">
+      <i id="sbb_icon" class="fa fa-bars" aria-hidden="true"></i>
+    </button>
+    </nav>
+  </div>
+
+  <div id="sidebar_menu">
+    <div id="sidebar_inner">
+      <!-- bs4 menu here -->
+
+      <nav class="list-group panel" id="MainMenu">
+        <div id="main_set1" class=" highlightable_entry list-group-item">
+          <button class="" onclick="toggleSet('set1')">
+            <i id="set1_icon" class="fa fa-bullseye" aria-hidden="true"></i>
+          </button>
+          <a href="#set1" class="collapsed" data-toggle="collapse" data-parent="#MainMenu" onclick="changeChevron(this)">
+            <i class="float-right fa fa-chevron-down"></i>
+            <p>Bestandsstruktur</p>
+          </a>
+      </div>
+        <div class="collapse" id="set1" >
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set1" onclick="readCheckboxes(this)" value="set1_1"/>
+              Kurzbeschreibung
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set1" onclick="readCheckboxes(this)" value="set1_2"/>
+              Impressionen
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set1" onclick="readCheckboxes(this)" value="set1_3"/>
+              Leerstandsquote
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set1" onclick="readCheckboxes(this)" value="set1_4"/>
+              Fluktuationsquote
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set1" onclick="readCheckboxes(this)" value="set1_5"/>
+              Wohnungstypen
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set1" onclick="readCheckboxes(this)" value="set1_6"/>
+              Baualtersklassen der Gebäude
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set1" onclick="readCheckboxes(this)" value="set1_7"/>
+              Anteil am Gesamtwohnungsbestand im Stadtteil
+              <div class="control_indicator"></div>
+            </label>
+        </div>
+        <div class=" highlightable_entry list-group-item">
+          <button class="" onclick="toggleSet('set2')">
+            <i id="set2_icon" class="fa fa-bullseye" aria-hidden="true"></i>
+          </button>
+          <a href="#set2" class="collapsed" data-toggle="collapse" data-parent="#MainMenu" onclick="changeChevron(this)">
+            <i class="float-right fa fa-chevron-down"></i>
+            <p>Preisniveau</p>
+          </a>
+          </div>
+        <div class="collapse" id="set2">
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set2" onclick="readCheckboxes(this)" value="set2_1"/>
+              Mietniveaus
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set2" onclick="readCheckboxes(this)" value="set2_2"/>
+              Mietwohnungen aus IS24
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set2" onclick="readCheckboxes(this)" value="set2_3"/>
+              Eigentumswohnungen aus IS24
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set2" onclick="readCheckboxes(this)" value="set2_4"/>
+              Einfamilienhäuser aus IS24
+              <div class="control_indicator"></div>
+            </label>
+        </div>
+        <div class=" highlightable_entry list-group-item">
+          <button class="" onclick="toggleSet('set3')">
+            <i id="set3_icon" class="fa fa-bullseye" aria-hidden="true"></i>
+          </button>
+          <a href="#set3" class="collapsed" data-toggle="collapse" data-parent="#MainMenu" onclick="changeChevron(this)">
+            <i class="float-right fa fa-chevron-down"></i>
+            <p>Nachfrage</p>
+          </a>
+        </div>
+        <div class="collapse" id="set3">
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set3" onclick="readCheckboxes(this)" value="set3_1"/>
+              Option_1
+              <div class="control_indicator"></div>
+            </label>
+        </div>
+        <div class=" highlightable_entry list-group-item">
+          <button class="" onclick="toggleSet('set4')">
+            <i id="set4_icon" class="fa fa-bullseye" aria-hidden="true"></i>
+          </button>
+          <a href="#set4" class="collapsed" data-toggle="collapse" data-parent="#MainMenu" onclick="changeChevron(this)">
+            <i class="float-right fa fa-chevron-down"></i>
+            <p>Sozialstruktur</p>
+          </a>
+        </div>
+        <div class="collapse" id="set4">
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set4" onclick="readCheckboxes(this)" value="set4_1"/>
+              Zielgruppen (Segmentierung und Abdeckung)
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set4" onclick="readCheckboxes(this)" value="set4_2"/>
+              Alter
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set4" onclick="readCheckboxes(this)" value="set4_3"/>
+              Haushaltsgröße
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set4" onclick="readCheckboxes(this)" value="set4_4"/>
+              Kaufkraft
+              <div class="control_indicator"></div>
+            </label>
+        </div>
+        <div class=" highlightable_entry list-group-item" >
+          <button class="" onclick="toggleSet('set5')">
+            <i id="set5_icon" class="fa fa-bullseye" aria-hidden="true"></i>
+          </button>
+          <a href="#set5" class="collapsed" data-toggle="collapse" data-parent="#MainMenu" onclick="changeChevron(this)">
+            <i class="float-right fa fa-chevron-down"></i>
+            <p>Zufriedenheit und Kundenbindung</p>
+          </a>
+        </div>
+        <div class="collapse" id="set5">
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set5" onclick="readCheckboxes(this)" value="set5_1"/>
+              Zufriedenheitsindizes
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set5" onclick="readCheckboxes(this)" value="set5_2"/>
+              Bindungstreiber
+              <div class="control_indicator"></div>
+            </label>
+        </div>
+        <div class=" highlightable_entry list-group-item">
+          <button class="" onclick="toggleSet('set6')">
+            <i id="set6_icon" class="fa fa-bullseye" aria-hidden="true"></i>
+          </button>
+          <a href="#set6" class="collapsed" data-toggle="collapse" data-parent="#MainMenu" onclick="changeChevron(this)">
+            <i class="float-right fa fa-chevron-down"></i>
+            <p>Standortbegehung</p>
+          </a>
+        </div>
+        <div class="collapse" id="set6">
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set6" onclick="readCheckboxes(this)" value="set6_1"/>
+              Gesamtergebnis Standortbegehung
+              <div class="control_indicator"></div>
+            </label>
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set6" onclick="readCheckboxes(this)" value="set6_2"/>
+              Top-Merkmale und Bottom-Merkmale
+              <div class="control_indicator"></div>
+            </label>
+        </div>
+        <div class=" highlightable_entry list-group-item">
+          <button class="" onclick="toggleSet('set7')">
+            <i id="set7_icon" class="fa fa-bullseye" aria-hidden="true"></i>
+          </button>
+          <a href="#set7" class="collapsed" data-toggle="collapse" data-parent="#MainMenu" onclick="changeChevron(this)">
+            <i class="float-right fa fa-chevron-down"></i>
+            <p>Strategiediskussion</p>
+          </a>
+        </div>
+        <div class="collapse" id="set7" style="display:none">
+          <label class="control control-checkbox list-group-item highlightable_entry">
+              <input type="checkbox" name="set7" onclick="readCheckboxes(this)" value="set7_1"/>
+              Option_1
+              <div class="control_indicator"></div>
+            </label>
+        </div>
+      </nav>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="graphs">
+  <div id="set1_graphs"></div>
+  <div id="set2_graphs"></div>
+  <div id="set3_graphs"></div>
+  <div id="set4_graphs"></div>
+  <div id="set5_graphs"></div>
+  <div id="set6_graphs"></div>
+  <div id="set7_graphs"></div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap.native/2.0.21/bootstrap-native-v4.min.js'></script>
+
+    <script  src="js/index.js"></script>
+
+</body>
+</html>
