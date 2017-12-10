@@ -16,12 +16,6 @@ html {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   position: absolute;
   top: 70px;
   left: 100px;
@@ -94,7 +88,7 @@ nav {
   transition: 0.4s ease;
   background-color: #123;
   overflow: scroll;
-  
+
 }
 
 #handlebar {
