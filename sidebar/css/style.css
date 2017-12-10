@@ -27,12 +27,15 @@
   max-height: 0px;
   display: block;
   overflow: hidden;
-  -webkit-transition: max-height 1s ease;
-  -o-transition: max-height 1s ease;
-  transition: max-height 1s ease;
+  -webkit-transition: max-height .15s cubic-bezier(0, 1, 0, 1);
+  -o-transition: max-height .15s cubic-bezier(0, 1, 0, 1);
+  transition: max-height .15s cubic-bezier(0, 1, 0, 1);
 }
 .collapse.show {
   max-height: 9001px;
+  -webkit-transition: max-height 1s ease-in-out;
+  -o-transition: max-height 1s ease-in-out;
+  transition: max-height 1s ease-in-out;
 }
 
 #MainMenu {
