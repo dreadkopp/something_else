@@ -1,6 +1,6 @@
 
 (function () {
-  var moveMe = document.getElementById('movable');
+  var moveMe = document.getElementById('handlebar');
 
  var oldtop = window.getComputedStyle(moveMe, null).top.replace("px","");
  var oldscroll = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
@@ -44,7 +44,7 @@
     var mouseX = e.clientX;
 
     // get element top and left positions
-    var elm = moveMe;
+    var elm = moveMe.parentElement;
     var elmY = elm.offsetTop;
     var elmX = elm.offsetLeft;
 
@@ -102,7 +102,7 @@
       resetFace();
     }
 
-    moveElm(elm, newElmTop, newElmLeft);
+    moveElm(elm.parentElement, newElmTop, newElmLeft);
   }
 
   // move elm
