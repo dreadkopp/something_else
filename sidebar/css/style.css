@@ -3,6 +3,10 @@
   font-family: Helvetica;
 }
 
+.main_menuentry label {
+  margin-bottom: 0px;
+}
+
 .highlightable_entry a {
   display: inline-table;
   width: calc(100% - 3rem);
