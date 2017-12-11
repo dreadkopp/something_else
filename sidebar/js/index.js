@@ -21,7 +21,7 @@ function toggleSet(setname) {
   var set = document.getElementsByName(setname);
   var jobdone = false;
   var unchecked = 0;
-  Array.from(set).forEach(checkbox => {
+  Array.from(set).forEach(function(checkbox) {
     if (checkbox.checked && !jobdone) {
       //if any checkbox is checked, uncheck all
       uncheckAll(set);
@@ -47,7 +47,7 @@ function setOpacity(setname) {
 
   var unchecked = 0;
 
-  Array.from(set).forEach(checkbox => {
+  Array.from(set).forEach(function(checkbox) {
     if (checkbox.checked) {
     } else {
       unchecked++;
@@ -69,13 +69,13 @@ function setOpacity(setname) {
 }
 
 function checkAll(set) {
-  Array.from(set).forEach(checkbox => {
+  Array.from(set).forEach(function(checkbox) {
     checkbox.checked = true;
   });
 }
 
 function uncheckAll(set) {
-  Array.from(set).forEach(checkbox => {
+  Array.from(set).forEach(function(checkbox) {
     checkbox.checked = false;
   });
 }
@@ -85,7 +85,7 @@ function readCheckboxes(el) {
   var set = document.getElementsByName(setname);
   var containerToDraw = document.getElementById(setname + "_graphs");
 
-  Array.from(set).forEach(checkbox => {
+  Array.from(set).forEach(function(checkbox) {
     if (checkbox.checked) {
       createDiagram(containerToDraw, checkbox.value);
     } else {
@@ -168,14 +168,14 @@ function highlightAnchor(menuname, watchedEl) {
   var container = document.getElementById(watchedEl);
   //get a list <vlist> of elements in the watchedEl which are in Viewport
   //of those elements strip the id of "_graph"
-  Array.from(container.getElementsByTagName("div")).forEach(el => {
+  Array.from(container.getElementsByTagName("div")).forEach(function(el) {
     if (isInViewport(el)) {
       vlist.push(el.id.replace("_graph", ""));
     }
   });
   //remove .active class from all highlightable_entries
   var highlightables = document.getElementsByClassName("highlightable_entry");
-  Array.from(highlightables).forEach(el => {
+  Array.from(highlightables).forEach(function(el) {
     el.classList.remove("active");
   });
 
@@ -184,7 +184,7 @@ function highlightAnchor(menuname, watchedEl) {
   var checkboxes = document
     .getElementById(menuname)
     .querySelectorAll("input[type=checkbox]");
-  Array.from(checkboxes).forEach(checkbox => {
+  Array.from(checkboxes).forEach(function(checkbox) {
     if (vlist.indexOf(checkbox.value) > -1) {
       //if we get a match add .active to the parent of this checkboxs container
       checkbox.parentElement.classList.add("active");
@@ -242,7 +242,7 @@ function changeChevron(el) {
 
   if (accordion) {
     var main_menuentries = document.getElementsByClassName("main_menuentry");
-    Array.from(main_menuentries).forEach(entry => {
+    Array.from(main_menuentries).forEach(function(entry){
       if (entry != el.parentElement) {
         entry.nextSibling.nextSibling.classList.remove("show");
         var chev = entry.children[1].children[0];
