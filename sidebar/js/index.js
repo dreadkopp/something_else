@@ -308,7 +308,8 @@ function newURL(){
     var submenuentries = entry.nextSibling.getElementsByClassName("list-group-item");
     var binary = "";
     Array.prototype.slice.call(submenuentries).forEach(function(subentry){
-      var checkbox = subentry.firstChild.nextSibling;
+      console.log(subentry.firstChild);
+      var checkbox = subentry.firstChild;
       if (checkbox.checked ){
         binary += "1";
       }
@@ -322,6 +323,7 @@ function newURL(){
     unencodedarray.push(binary);
   });
   var stateObj = {};
+  console.log(encode(unencodedarray));
   history.pushState(stateObj, "diagrams" , encode(unencodedarray));
 }
 
@@ -330,7 +332,7 @@ function readConfigFromURL() {
   checkboxes = decode()[1];
   var main_menuentries = document.getElementsByClassName("main_menuentry");
   Array.prototype.slice.call(main_menuentries).forEach(function(entry){
-    var submenuentries = entry.nextSibling.nextSibling.getElementsByClassName("list-group-item");
+    var submenuentries = entry.nextSibling.getElementsByClassName("list-group-item");
     var code = checkboxes.shift().split("");
     Array.prototype.slice.call(submenuentries).forEach(function(subentry){
       var checkbox = subentry.firstChild.nextSibling;
@@ -497,5 +499,6 @@ function buildMenu(){
 
 }
 
-readConfigFromURL();
 buildMenu();
+
+readConfigFromURL();
