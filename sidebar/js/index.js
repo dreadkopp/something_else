@@ -425,13 +425,16 @@ function buildMenu(){
 
     var mainentry = document.createElement("div");
     mainentry.id = "main_set" + (i+1);
-    mainentry.classList.add("main_menuentry", "highlightable_entry", "list-group-item");
+    mainentry.classList.add("main_menuentry")
+    mainentry.classList.add("highlightable_entry");
+    mainentry.classList.add("list-group-item");
     mainentry.name = menu[i][0];
 
     var button = document.createElement("button");
     button.setAttribute('onclick','toggleSet("set'+(i+1)+'")');
     var icon = document.createElement("i");
-    icon.classList.add("fa", "fa-bullseye");;
+    icon.classList.add("fa");
+    icon.classList.add("fa-bullseye");
     icon.setAttribute('aria-hidden' , 'true');
     icon.id = "set" + (i+1) + "_icon";
     button.appendChild(icon);
@@ -444,7 +447,9 @@ function buildMenu(){
     link.setAttribute('onclick','changeChevron(this)');
 
     var chevron = document.createElement("i");
-    chevron.classList.add("float-right", "fa",  "fa-chevron-down");
+    chevron.classList.add("float-right");
+    chevron.classList.add( "fa");
+    chevron.classList.add("fa-chevron-down");
 
     var label = document.createElement("label");
     label.innerHTML = menu[i][0];
@@ -462,7 +467,10 @@ function buildMenu(){
 
     for(var j = 0; j < menu[i][1].length; j++){
       var label = document.createElement("label");
-      label.classList.add("control", "control-checkbox", "list-group-item", "highlightable_entry");
+      label.classList.add("control");
+      label.classList.add("control-checkbox");
+      label.classList.add("list-group-item");
+      label.classList.add("highlightable_entry");
       var input = document.createElement("input");
       input.name = "set" + (i+1);
       input.setAttribute('onclick' , 'readCheckboxes(this)');
