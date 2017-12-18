@@ -355,10 +355,9 @@ function readConfigFromURL() {
 
 /* build menu from JSON */
 
-function buildmenu(){
 
+function getJson(url){
 
-  //getting the JSON
   var json = "";
   var request = new XMLHttpRequest();
     request.open('GET', '/menustructure.php', true);
@@ -370,6 +369,59 @@ function buildmenu(){
         }
     };
     request.send();
+
+  return json;
+
+
+}
+
+/*Objects.entries polyfill*/
+if (!Object.entries)
+  Object.entries = function( obj ){
+    var ownProps = Object.keys( obj ),
+        i = ownProps.length,
+        resArray = new Array(i); // preallocate the Array
+    while (i--)
+      resArray[i] = [ownProps[i], obj[ownProps[i]]];
+
+    return resArray;
+  };
+
+
+function buildMenu(){
+
+
+  //getting the JSON
+  //var json = getJson("/menustructure.php");
+  var json =
+  '{ \
+  "Bestandsstruktur": [ \
+    "Kurzbeschreibung", \
+    "Impressionen", \
+    "Leerstandsquote", \
+    "Fluktuationsquote", \
+    "Wohnungstypen", \
+    "Baualtersklassen der Gebäude", \
+    "Anteil am Gesamtwohnungsbestand im Stadtteil" \
+  ], \
+  "wasanderes": [ \
+    "Kurzbeschreibung", \
+    "Impressionen", \
+    "Leerstandsquote", \
+    "Fluktuationsquote", \
+    "Wohnungstypen", \
+    "Baualtersklassen der Gebäude", \
+    "Anteil am Gesamtwohnungsbestand im Stadtteil" \
+  ] \
+  }';
+
+  var obj = JSON.parse(json);
+
+  var arr = Object.keys(obj).map(function (key) {
+    return { [key]: obj[key] };
+  });
+  return Object.entries(obj);
+
 }
 
 readConfigFromURL();
