@@ -429,7 +429,7 @@ function buildMenu(){
     mainentry.name = menu[i][0];
 
     var button = document.createElement("button");
-    button.onclick = function(){toggleSet('set' + (i+1))};
+    button.setAttribute('onclick','toggleSet("set'+(i+1)+'")');
     var icon = document.createElement("i");
     icon.classList.add("fa", "fa-bullseye");;
     icon.setAttribute('aria-hidden' , 'true');
