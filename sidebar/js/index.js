@@ -417,9 +417,6 @@ function buildMenu(){
 
   var obj = JSON.parse(json);
 
-  var arr = Object.keys(obj).map(function (key) {
-    return { [key]: obj[key] };
-  });
   return Object.entries(obj);
 
 }
