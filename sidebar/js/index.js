@@ -280,10 +280,11 @@ function decode() {
   var quarter = encoded[encoded.length - 2];
   encoded = encoded[encoded.length - 1];
   var encarray = encoded.match(/.{3}/g);
-
+  var decodedarray = []
   encarray.forEach(function(entry){
-    console.log(hex2bin(entry));
+    decodedarray.push(hex2bin(entry));
   })
+  return [quarter , decodedarray];
 
 }
 
@@ -321,6 +322,19 @@ function newURL(){
     }
     unencodedarray.push(binary);
   });
-  console.log(unencodedarray);
-  console.log(encode(unencodedarray));
+  encode(unencodedarray);
+}
+
+function readConfigfromURL() {
+  quarter = decode()[0];
+  checkboxes = decode()[1];
+  var main_menuentries = document.getElementsByClassName("main_menuentry");
+  Array.prototype.slice.call(main_menuentries).forEach(function(entry){
+    var submenuentries = entry.nextSibling.nextSibling.getElementsByClassName("list-group-item");
+    var code = checkboxes.shift();
+    console.log(code);
+    Array.prototype.slice.call(submenuentries).forEach(function(subentry){
+
+    });
+  });
 }
