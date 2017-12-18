@@ -417,8 +417,69 @@ function buildMenu(){
 
   var obj = JSON.parse(json);
 
-  return Object.entries(obj);
+  var menu = Object.entries(obj);
+
+  var menu_div = document.createElement("div");
+  menu_div.id = "temp_menu";
+  for(var i = 0; i < menu.length; i++){
+
+    var mainentry = document.createElement("div");
+    mainentry.id = "main_set" + (i+1);
+    mainentry.classList.add("main_menuentry", "highlightable_entry", "list-group-item");
+    mainentry.name = menu[i][0];
+
+    var button = document.createElement("button");
+    button.onclick = function(){toggleSet('set' + (i+1))};
+    var icon = document.createElement("i");
+    icon.classList.add("fa", "fa-bullseye");;
+    icon.setAttribute('aria-hidden' , 'true');
+    icon.id = "set" + (i+1) + "_icon";
+    button.appendChild(icon);
+    mainentry.appendChild(button);
+
+    var link = document.createElement("a");
+    link.setAttribute('href', "#set" + (i+1));
+
+    var chevron = document.createElement("i");
+    chevron.classList.add("float-right", "fa",  "fa-chevron-down");
+
+    var label = document.createElement("label");
+    label.innerHTML = menu[i][0];
+
+    link.appendChild(chevron);
+    link.appendChild(label);
+
+    mainentry.appendChild(link);
+
+    menu_div.appendChild(mainentry);
+
+    var submenu = document.createElement("div");
+    submenu.id = "set" + (i+1);
+    submenu.classList.add("collapse");
+
+    for(var j = 0; j < menu[i][1].length; j++){
+      var label = document.createElement("label");
+      submenu.appendChild(label);
+    }
+
+    menu_div.appendChild(submenu);
+    var canvas = document.createElement("div");
+    canvas.id = "set" + (i+1) + "_graphs";
+    document.getElementById("graphs").appendChild(canvas);
+
+  }
+
+  document.body.appendChild(menu_div);
+
+  /*
+  menu[i][0] = main_menuentry;
+  menu[i][1][j] = submenuentries;
+  set = "set" + i;
+*/
+  //build dom here
+  return menu_div;
 
 }
 
 readConfigFromURL();
+buildMenu();
