@@ -331,10 +331,21 @@ function readConfigfromURL() {
   var main_menuentries = document.getElementsByClassName("main_menuentry");
   Array.prototype.slice.call(main_menuentries).forEach(function(entry){
     var submenuentries = entry.nextSibling.nextSibling.getElementsByClassName("list-group-item");
-    var code = checkboxes.shift();
-    console.log(code);
+    var code = checkboxes.shift().split("");
     Array.prototype.slice.call(submenuentries).forEach(function(subentry){
+      var checkbox = subentry.firstChild.nextSibling;
+      if (code.shift() == 1){
+        checkbox.checked = true;
+      }
+      else {
+        checkbox.checked = false;
+      }
 
     });
+    var setname = entry.children[0].children[0].id.replace("_icon","");
+    setOpacity(setname);
+    var temp = document.createElement("div");
+    temp.name = setname;
+    readCheckboxes(temp);
   });
 }
