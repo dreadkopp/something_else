@@ -99,6 +99,7 @@ function readCheckboxes(el) {
   });
   setOpacity(setname);
   highlightAnchor(menuID, watchedElementID);
+  newURL();
 }
 
 function createDiagram(containerToDraw, id_part) {
@@ -296,10 +297,8 @@ function encode (array){
   array.forEach(function(entry){
     encodedstr += bin2hex(entry);
   })
-  var goto =  window.location.href + "?" + quarterid + "?" + encodedstr;
-  console.log(goto);
-  //window.location.href = goto;
-
+  var goto = "?" + quarterid + "?" + encodedstr;
+  return goto;
 }
 
 function newURL(){
@@ -322,7 +321,8 @@ function newURL(){
     }
     unencodedarray.push(binary);
   });
-  encode(unencodedarray);
+  var stateObj = {}:
+  history.pushState(stateObj, "diagrams" , encode(unencodedarray));
 }
 
 function readConfigFromURL() {
