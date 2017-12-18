@@ -190,7 +190,7 @@ function highlightAnchor(menuname, watchedEl) {
       //if we get a match add .active to the parent of this checkboxs container
       checkbox.parentElement.classList.add("active");
       //also add .active to the .highlightable_entry div right before the parent of the parent of the checkbox
-      checkbox.parentElement.parentElement.previousSibling.previousSibling.classList.add(
+      checkbox.parentElement.parentElement.previousSibling.classList.add(
         "active"
       );
     }
@@ -225,7 +225,7 @@ var accordion = true;
 
 function changeChevron(el) {
 
-  var follow = el.parentElement.nextSibling.nextSibling;
+  var follow = el.parentElement.nextSibling;
   var elem = el.children[0]
 
   if (elem.classList.contains("fa-chevron-down")) {
@@ -245,7 +245,7 @@ function changeChevron(el) {
     var main_menuentries = document.getElementsByClassName("main_menuentry");
     Array.prototype.slice.call(main_menuentries).forEach(function(entry){
       if (entry != el.parentElement) {
-        entry.nextSibling.nextSibling.classList.remove("show");
+        entry.nextSibling.classList.remove("show");
         var chev = entry.children[1].children[0];
         chev.classList.remove("fa-chevron-up");
         if (!chev.classList.contains("fa-chevron-down")){
@@ -305,7 +305,7 @@ function newURL(){
   var unencodedarray = [];
   var main_menuentries = document.getElementsByClassName("main_menuentry");
   Array.prototype.slice.call(main_menuentries).forEach(function(entry){
-    var submenuentries = entry.nextSibling.nextSibling.getElementsByClassName("list-group-item");
+    var submenuentries = entry.nextSibling.getElementsByClassName("list-group-item");
     var binary = "";
     Array.prototype.slice.call(submenuentries).forEach(function(subentry){
       var checkbox = subentry.firstChild.nextSibling;
@@ -439,6 +439,9 @@ function buildMenu(){
 
     var link = document.createElement("a");
     link.setAttribute('href', "#set" + (i+1));
+    link.setAttribute('data-toggle', 'collapse');
+    link.setAttribute('data-parent', '#MainMenu');
+    link.setAttribute('onclick','changeChevron(this)');
 
     var chevron = document.createElement("i");
     chevron.classList.add("float-right", "fa",  "fa-chevron-down");
