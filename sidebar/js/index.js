@@ -298,7 +298,7 @@ function encode (array){
   })
   var goto =  window.location.href + "?" + quarterid + "?" + encodedstr;
   console.log(goto);
-  window.location.href = goto;
+  //window.location.href = goto;
 
 }
 
@@ -325,7 +325,7 @@ function newURL(){
   encode(unencodedarray);
 }
 
-function readConfigfromURL() {
+function readConfigFromURL() {
   quarter = decode()[0];
   checkboxes = decode()[1];
   var main_menuentries = document.getElementsByClassName("main_menuentry");
@@ -349,3 +349,28 @@ function readConfigfromURL() {
     readCheckboxes(temp);
   });
 }
+
+
+/* end en/decoding URL */
+
+/* build menu from JSON */
+
+function buildmenu(){
+
+
+  //getting the JSON
+  var json = "";
+  var request = new XMLHttpRequest();
+    request.open('GET', '/menustructure.php', true);
+
+    request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    request.onload = function () {
+    if (this.status >= 200 && this.status < 400) {
+            json = JSON.parse(this.response);
+        }
+    };
+    request.send();
+    });
+}
+
+readConfigFromURL();
