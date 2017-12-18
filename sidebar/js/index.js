@@ -321,7 +321,7 @@ function newURL(){
     }
     unencodedarray.push(binary);
   });
-  var stateObj = {}:
+  var stateObj = {};
   history.pushState(stateObj, "diagrams" , encode(unencodedarray));
 }
 
@@ -370,7 +370,6 @@ function buildmenu(){
         }
     };
     request.send();
-    });
 }
 
 readConfigFromURL();
