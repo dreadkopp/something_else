@@ -459,6 +459,17 @@ function buildMenu(){
 
     for(var j = 0; j < menu[i][1].length; j++){
       var label = document.createElement("label");
+      label.classList.add("control", "control-checkbox", "list-group-item", "highlightable_entry");
+      var input = document.createElement("input");
+      input.name = "set" + (i+1);
+      input.setAttribute('onclick' , 'readCheckboxes(this)');
+      input.setAttribute('value', 'set'+(i+1)+"_"+(j+1));
+      input.setAttribute('type', 'checkbox');
+      label.appendChild(input);
+      label.innerHTML += menu[i][1][j];
+      var indicator = document.createElement("div");
+      indicator.classList.add("control_indicator");
+      label.appendChild(indicator);
       submenu.appendChild(label);
     }
 
@@ -469,15 +480,9 @@ function buildMenu(){
 
   }
 
-  document.body.appendChild(menu_div);
+  //put it to the end for now
+  document.getElementById("MainMenu").appendChild(menu_div);
 
-  /*
-  menu[i][0] = main_menuentry;
-  menu[i][1][j] = submenuentries;
-  set = "set" + i;
-*/
-  //build dom here
-  return menu_div;
 
 }
 
