@@ -1,4 +1,5 @@
 var sbt = false;
+var menubuild = false;
 
 function toggle_sidebar() {
   var sb = document.getElementById("sidebar_menu");
@@ -99,7 +100,7 @@ function readCheckboxes(el) {
   });
   setOpacity(setname);
   highlightAnchor(menuID, watchedElementID);
-  newURL();
+  if(menubuild){newURL()};
 }
 
 function createDiagram(containerToDraw, id_part) {
@@ -229,13 +230,11 @@ function changeChevron(el) {
   var elem = el.children[0]
 
   if (elem.classList.contains("fa-chevron-down")) {
-    console.log("expanding...");
     follow.classList.add("show");
     elem.classList.remove("fa-chevron-down");
     elem.classList.add("fa-chevron-up");
   }
   else {
-    console.log("collapsing...");
     follow.classList.remove("show");
     elem.classList.remove("fa-chevron-up");
     elem.classList.add("fa-chevron-down");
@@ -308,7 +307,6 @@ function newURL(){
     var submenuentries = entry.nextSibling.getElementsByClassName("list-group-item");
     var binary = "";
     Array.prototype.slice.call(submenuentries).forEach(function(subentry){
-      console.log(subentry.firstChild);
       var checkbox = subentry.firstChild;
       if (checkbox.checked ){
         binary += "1";
@@ -323,7 +321,6 @@ function newURL(){
     unencodedarray.push(binary);
   });
   var stateObj = {};
-  console.log(encode(unencodedarray));
   history.pushState(stateObj, "diagrams" , encode(unencodedarray));
 }
 
@@ -335,7 +332,7 @@ function readConfigFromURL() {
     var submenuentries = entry.nextSibling.getElementsByClassName("list-group-item");
     var code = checkboxes.shift().split("");
     Array.prototype.slice.call(submenuentries).forEach(function(subentry){
-      var checkbox = subentry.firstChild.nextSibling;
+      var checkbox = subentry.firstChild;
       if (code.shift() == 1){
         checkbox.checked = true;
       }
@@ -350,6 +347,7 @@ function readConfigFromURL() {
     temp.name = setname;
     readCheckboxes(temp);
   });
+  console.log("read config from URL and applied settings");
 }
 
 
@@ -495,6 +493,8 @@ function buildMenu(){
 
   //put it to the end for now
   document.getElementById("MainMenu").appendChild(menu_div);
+  console.log("menubuild done");
+  menubuild = true;
 
 
 }
