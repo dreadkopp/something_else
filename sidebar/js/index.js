@@ -12,14 +12,12 @@ function getDiagramHTML(qID, mm, sm, proto) {
       var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-              console.log("applying html");
-              console.log("responseText");
                 proto.innerHTML = this.responseText;
             }
         };
         //DEBUG
         //xmlhttp.open("GET", "get_content.php?q=" + qID + "&mm=" + mm + "&sm=" +sm, true);
-        xmlhttp.open("GET", "get_content.php", true);
+        xmlhttp.open("GET", "https://sqis.inwis.de/sqis/vbw/get_content.php", true);
         xmlhttp.send();
 }
 
@@ -532,21 +530,21 @@ window.onscroll = function() {
 };
 
 function drawDiagrams(){
-  var mainNodes = document.getElementById("graphs").childNodes;
+  var mainNodes = document.getElementById("graphs").children;
   Array.prototype.slice.call(mainNodes).forEach(function(mainNode){
 
     //if mainNode is in is in Viewport
     if (isInViewport(mainNode)){
 
-      var subNodes = mainNode.childNodes;
+      var subNodes = mainNode.children;
       Array.prototype.slice.call(subNodes).forEach(function(subNode){
         //check if in Viewport and has class "drawn"
         //if not draw it by eval the function stored as data-function attribute
         if (isInViewport(subNode)){
             if (!subNode.classList.contains("drawn")){
-            var diagram = subNode.getElementsByClassName("diagram");
-            diagram_function = Array.prototype.slice.call(diagram).pop().getAttribute('data-function');
-            eval(diagram_function);
+            var chart = subNode.getElementsByClassName("chart");
+            var chart_function = Array.prototype.slice.call(chart).pop().getAttribute('data-function');
+            eval(chart_function);
             subNode.classList.add("drawn");
           }
         }
