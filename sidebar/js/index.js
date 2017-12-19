@@ -558,3 +558,6 @@ function drawDiagrams(){
 buildMenu();
 
 readConfigFromURL();
+
+//draw the diagrams which are in Viewport after reading from config
+drawDiagrams();
