@@ -539,12 +539,14 @@ function drawDiagrams(){
       var subNodes = mainNode.children;
       Array.prototype.slice.call(subNodes).forEach(function(subNode){
         //check if in Viewport and has class "drawn"
-        //if not draw it by eval the function stored as data-function attribute
+        //if not draw it using  the function stored as data-function attribute
         if (isInViewport(subNode)){
             if (!subNode.classList.contains("drawn")){
             var chart = subNode.getElementsByClassName("chart");
+            console.log(chart);
             var chart_function = Array.prototype.slice.call(chart).pop().getAttribute('data-function');
-            eval(chart_function);
+            var f = new Function(chart_function);
+            f();
             subNode.classList.add("drawn");
           }
         }
