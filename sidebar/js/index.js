@@ -1,3 +1,24 @@
+/*
+qID == quarterID
+mm == mainmenu
+sm == submenu
+proto == html element in which we write
+*/
+
+
+
+function getDiagramHTML(qID, mm, sm, proto) {
+
+      var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                proto.innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "get_content.php?q=" + qID + "&mm=" + mm + "&sm=" +sm, true);
+        xmlhttp.send();
+}
+
 var sbt = false;
 var menubuild = false;
 
@@ -151,14 +172,15 @@ function createDiagram(containerToDraw, id_part) {
       }
     }
     //paint diagram (dummyfunction)
-    document.getElementById(new_id).style.width = "500px";
+    /*document.getElementById(new_id).style.width = "500px";
 
     document.getElementById(new_id).style.backgroundColor = "cyan";
 
     document.getElementById(new_id).style.margin = "20px";
 
     document.getElementById(new_id).innerHTML = "<h3>" + new_id + "</h3>";
-    document.getElementById(new_id).style.height = "200px";
+    document.getElementById(new_id).style.height = "200px";*/
+    getDiagramHTML(qID,mm,sm,document.getElementById(new_id));
   }
 }
 
@@ -491,13 +513,42 @@ function buildMenu(){
 
   }
 
-  //put it to the end for now
   document.getElementById("MainMenu").appendChild(menu_div);
   console.log("menubuild done");
   menubuild = true;
 
 
 }
+
+window.onscroll = function() {
+  drawDiagrams();
+};
+
+function drawDiagrams(){
+  var mainNodes = document.getElementById("graphs").childNodes;
+  Array.prototype.slice.call(mainNodes).forEach(function(mainNode){
+
+    //if mainNode is in is in Viewport
+    if (isInViewport(mainNode){
+
+      var subNodes = mainNode.childNodes;
+      Array.prototype.slice.call(subNodes).forEach(function(subNode){
+        //check if in Viewport and has class "drawn"
+        //if not draw it by eval the function stored as data-function attribute
+        if (isInViewport(subNode)){
+            if (!subNode.classList.contains("drawn")){
+            var diagram = subNode.getElementsByClassName("diagram");
+            diagram_function = Array.prototype.slice.call(diagram).pop().getAttribute('data-function');
+            eval(diagram_function);
+            subNode.classList.add("drawn");
+          }
+        }
+      }
+    }
+  }
+}
+
+
 
 buildMenu();
 
