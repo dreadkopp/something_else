@@ -29,6 +29,10 @@ img {
     font-size: 16px;
 }
 
+.table-container {
+  display: flex;
+}
+
 .table-container-entry {
   float: left;
   display: flex;
@@ -37,6 +41,16 @@ img {
 .table-container-entry div {
   float: left;
   align-self: center;
+  padding: 5px;
+}
+
+.table-container-entry {
+  border-right: 2px solid;
+  margin-top: -1px;
+  margin-bottom: -1px;
+}
+.table-container-entry:last-child {
+  border: none;
 }
 
 
@@ -48,7 +62,7 @@ img {
       <td class="label">Derzeitige Bewohner des Handlungsraumes</td>
       <td>
         <div class="table-container">
-            <div class="table-container-entry" style="width: calc(100% / 1)">
+            <div class="table-container-entry" >
             <div>
               <img src="http://via.placeholder.com/100x166/ffffff/000000"></img>
             </div>
@@ -63,7 +77,7 @@ img {
       <td class="label">Derzeitige Bewohner des Handlungsraumes (VBW)</td>
       <td>
         <div class="table-container">
-          <div class="table-container-entry" style="width: calc(100% / 2)">
+          <div class="table-container-entry" >
             <div>
               <img src="http://via.placeholder.com/100x166/ffffff/000000"></img>
             </div>
@@ -74,7 +88,7 @@ img {
               <p class="desc">Starter, Familien, Mid-Ager und Konsolidierer</p>
             </div>
           </div>
-          <div class="table-container-entry" style="width: calc(100% / 2)">
+          <div class="table-container-entry" >
             <div>
               <p>TEST</p>
             </div>
@@ -86,9 +100,9 @@ img {
       <td class="label">Eignung des derzeitigen Bestands (VBW)</td>
       <td>
         <div class="table-container">
-          <div class="table-container-entry" style="width: calc(100% / 2)">
+          <div class="table-container-entry" >
           </div>
-          <div class="table-container-entry" style="width: calc(100% / 2)">
+          <div class="table-container-entry" >
           </div>
         </div>
       </td>
@@ -97,9 +111,9 @@ img {
       <td class="label">Wohnstandortpräferenzen für den Handlungsraum</td>
       <td>
         <div class="table-container">
-          <div class="table-container-entry" style="width: calc(100% / 2)">
+          <div class="table-container-entry" >
           </div>
-          <div class="table-container-entry" style="width: calc(100% / 2)">
+          <div class="table-container-entry" >
           </div>
         </div>
       </td>
