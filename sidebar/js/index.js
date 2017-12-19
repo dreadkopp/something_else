@@ -15,7 +15,9 @@ function getDiagramHTML(qID, mm, sm, proto) {
                 proto.innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "get_content.php?q=" + qID + "&mm=" + mm + "&sm=" +sm, true);
+        //DEBUG
+        //xmlhttp.open("GET", "get_content.php?q=" + qID + "&mm=" + mm + "&sm=" +sm, true);
+        xmlhttp.open("GET", "get_content.php", true);
         xmlhttp.send();
 }
 
@@ -180,6 +182,9 @@ function createDiagram(containerToDraw, id_part) {
 
     document.getElementById(new_id).innerHTML = "<h3>" + new_id + "</h3>";
     document.getElementById(new_id).style.height = "200px";*/
+    var qID = 1;
+    var mm = 1;
+    var sm = 1;
     getDiagramHTML(qID,mm,sm,document.getElementById(new_id));
   }
 }
