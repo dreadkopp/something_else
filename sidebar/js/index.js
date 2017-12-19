@@ -543,7 +543,7 @@ function drawDiagrams(){
         if (isInViewport(subNode)){
             if (!subNode.classList.contains("drawn")){
             var chart = subNode.getElementsByClassName("chart");
-            console.log(chart);
+            //console.log(chart);
             var chart_function = Array.prototype.slice.call(chart).pop().getAttribute('data-function');
             var f = new Function(chart_function);
             f();
