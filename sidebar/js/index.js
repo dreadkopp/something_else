@@ -534,7 +534,7 @@ function drawDiagrams(){
   Array.prototype.slice.call(mainNodes).forEach(function(mainNode){
 
     //if mainNode is in is in Viewport
-    if (isInViewport(mainNode){
+    if (isInViewport(mainNode)){
 
       var subNodes = mainNode.childNodes;
       Array.prototype.slice.call(subNodes).forEach(function(subNode){
@@ -548,9 +548,9 @@ function drawDiagrams(){
             subNode.classList.add("drawn");
           }
         }
-      }
+      });
     }
-  }
+  });
 }
 
 
