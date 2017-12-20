@@ -537,10 +537,12 @@ function drawDiagrams(){
             if (!subNode.classList.contains("drawn")){
             var chart = subNode.getElementsByClassName("chart");
             //console.log(chart);
-            var chart_function = Array.prototype.slice.call(chart).pop().getAttribute('data-function');
-            var f = new Function(chart_function);
-            f();
-            subNode.classList.add("drawn");
+            if (Array.prototype.slice.call(chart).length) {
+              var chart_function = Array.prototype.slice.call(chart).pop().getAttribute('data-function');
+              var f = new Function(chart_function);
+              f();
+              subNode.classList.add("drawn");
+            }
           }
         }
       });
