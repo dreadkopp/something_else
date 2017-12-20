@@ -173,18 +173,11 @@ function createDiagram(containerToDraw, id_part) {
         }
       }
     }
-    //paint diagram (dummyfunction)
-    /*document.getElementById(new_id).style.width = "500px";
-
-    document.getElementById(new_id).style.backgroundColor = "cyan";
-
-    document.getElementById(new_id).style.margin = "20px";
-
-    document.getElementById(new_id).innerHTML = "<h3>" + new_id + "</h3>";
-    document.getElementById(new_id).style.height = "200px";*/
-    var qID = 1;
-    var mm = 1;
-    var sm = 1;
+    var qID = decode()[0];
+    var tmp = id_part.replace("set" , "").split("_");
+    var mm = tmp[0];
+    var sm = tmp[1];
+    console.log("qID: " + qID + ",MM: " + mm + ", SM = " + sm);
     getDiagramHTML(qID,mm,sm,document.getElementById(new_id));
   }
 }
