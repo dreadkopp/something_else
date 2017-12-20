@@ -14,6 +14,16 @@ function getDiagramHTML(qID, mm, sm, proto) {
             if (this.readyState == 4 && this.status == 200) {
                 proto.innerHTML = this.responseText;
             }
+            //draw instantly when in Viewport
+            var chart = Array.prototype.slice.call(proto.getElementsByClassName("chart"));
+            if (Array.prototype.slice.call(chart).length) {
+              var chart_function = Array.prototype.slice.call(chart).pop().getAttribute('data-function');
+              var f = new Function(chart_function);
+              console.log("if i could i would call: " + chart_function);
+              //f();
+
+              proto.classList.add("drawn");
+            }
         };
         //DEBUG
         //xmlhttp.open("GET", "get_content.php?q=" + qID + "&mm=" + mm + "&sm=" +sm, true);
@@ -535,14 +545,16 @@ function drawDiagrams(){
         //if not draw it using  the function stored as data-function attribute
         if (isInViewport(subNode)){
             if (!subNode.classList.contains("drawn")){
-            var chart = subNode.getElementsByClassName("chart");
-            //console.log(chart);
-            if (Array.prototype.slice.call(chart).length) {
-              var chart_function = Array.prototype.slice.call(chart).pop().getAttribute('data-function');
-              var f = new Function(chart_function);
-              f();
-              subNode.classList.add("drawn");
-            }
+              //console.log(subNode);
+              var chart = subNode.getElementsByClassName("chart");
+
+              if (Array.prototype.slice.call(chart).length) {
+                var chart_function = Array.prototype.slice.call(chart).pop().getAttribute('data-function');
+                var f = new Function(chart_function);
+                console.log("if i could i would call: " + chart_function);
+                //f();
+                subNode.classList.add("drawn");
+              }
           }
         }
       });
@@ -555,6 +567,3 @@ function drawDiagrams(){
 buildMenu();
 
 readConfigFromURL();
-
-//draw the diagrams which are in Viewport after reading from config
-drawDiagrams();
