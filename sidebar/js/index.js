@@ -25,9 +25,9 @@ function getDiagramHTML(qID, mm, sm, proto) {
               proto.classList.add("drawn");
             }
         };
-        //DEBUG
-        //xmlhttp.open("GET", "get_content.php?q=" + qID + "&mm=" + mm + "&sm=" +sm, true);
-        xmlhttp.open("GET", "https://sqis.inwis.de/sqis/vbw/get_content.php", true);
+
+        xmlhttp.open("GET", "https://sqis.inwis.de/sqis/vbw/get_content.php?q=" + qID + "&mm=" + mm + "&sm=" +sm, true);
+
         xmlhttp.send();
 }
 
