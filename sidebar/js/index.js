@@ -114,23 +114,48 @@ function uncheckAll(set) {
   });
 }
 
+
+function updateDiagrams() {
+
+
+  var all_inputs = document.getElementsByClassName("sidebar_menu_input");
+  Array.prototype.slice.call(all_inputs).forEach(function(el){
+
+    var setname = el.name;
+    var set = document.getElementsByName(setname);
+    var containerToDraw = document.getElementById(setname + "_graphs");
+
+    Array.prototype.slice.call(set).forEach(function(checkbox) {
+      if (checkbox.checked) {
+        createDiagram(containerToDraw, checkbox.value);
+      } else {
+        // remove DOM element here
+        var element_id = checkbox.value + "_graph";
+        if (document.getElementById(element_id)) {
+          var element = document.getElementById(element_id);
+          element.parentNode.removeChild(element);
+        }
+      }
+    });
+
+    //check if all our opacities and highlighting and endcoded URL is still in order
+
+    setOpacity(setname);
+    highlightAnchor(menuID, watchedElementID);
+    if(menubuild){newURL()};
+
+
+  });
+
+
+
+}
+
+
+
 function readCheckboxes(el) {
   var setname = el.name;
-  var set = document.getElementsByName(setname);
-  var containerToDraw = document.getElementById(setname + "_graphs");
 
-  Array.prototype.slice.call(set).forEach(function(checkbox) {
-    if (checkbox.checked) {
-      createDiagram(containerToDraw, checkbox.value);
-    } else {
-      // remove DOM element here
-      var element_id = checkbox.value + "_graph";
-      if (document.getElementById(element_id)) {
-        var element = document.getElementById(element_id);
-        element.parentNode.removeChild(element);
-      }
-    }
-  });
   setOpacity(setname);
   highlightAnchor(menuID, watchedElementID);
   if(menubuild){newURL()};
@@ -471,7 +496,7 @@ function buildMenu(){
     mainentry.appendChild(button);
 
     var link = document.createElement("a");
-    link.setAttribute('href', "#set" + (i+1));
+  //  link.setAttribute('href', "#set" + (i+1));
     link.setAttribute('data-toggle', 'collapse');
     link.setAttribute('data-parent', '#MainMenu');
     link.setAttribute('onclick','changeChevron(this)');
@@ -506,6 +531,7 @@ function buildMenu(){
       input.setAttribute('onclick' , 'readCheckboxes(this)');
       input.setAttribute('value', 'set'+(i+1)+"_"+(j+1));
       input.setAttribute('type', 'checkbox');
+      input.classList.add("sidebar_menu_input");
       label.appendChild(input);
       label.innerHTML += menu[i][1][j];
       var indicator = document.createElement("div");
